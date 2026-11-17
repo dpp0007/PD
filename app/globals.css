@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f6f2e8;
+  --color-surface: #fffdf8;
+  --color-line: #ddd6c4;
+  --color-ink: #15130f;
+  --color-mute: #6d675a;
+  --color-accent: #0f7a4a;
+  --color-accent-soft: #e0f0e6;
+  --color-hot: #ff5a1f;
+  --color-hot-soft: #ffe9df;
+  --color-warn: #946200;
+  --color-warn-soft: #fbf0cf;
+  --color-bad: #b42318;
+  --color-bad-soft: #fde7e4;
+  --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html { background: var(--color-bg); }
+body { color: var(--color-ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--color-hot-soft); }
+:focus-visible { outline: 2px solid var(--color-hot); outline-offset: 2px; }
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+
+@layer components {
+  .card { @apply rounded-xl border border-line bg-surface; }
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-lg bg-ink px-4 py-2 text-sm font-medium text-bg transition-colors hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-40; }
+  .btn-hot { @apply inline-flex items-center justify-center gap-2 rounded-lg bg-hot px-4 py-2 text-sm font-semibold text-white transition-colors hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-40; }
+  .btn-ghost { @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-bg disabled:cursor-not-allowed disabled:opacity-40; }
+  .btn-danger { @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium text-bad transition-colors hover:bg-bad-soft disabled:cursor-not-allowed disabled:opacity-40; }
+  .label { @apply font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-mute; }
+  .input { @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm placeholder:text-mute/70; }
+  .mono { @apply font-mono tabular-nums; }
+}
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
